@@ -54,15 +54,17 @@ fun main(){
         var usuario = Usuario(nombre, apellido, edad, correo, sistemaSalud)
         usuarios.add(usuario)
     }
-    for (u in usuarios){
-        println(u)
+    for (u in usuarios.sortedBy {
+        usuario -> usuario.edad
+    }){
+        println("$u")
     }
 }
 
 fun validarSistemaSalud(sistemaSalud: String): Boolean {
     return when (sistemaSalud.toString()) {
-        "Fonasa" -> true
-        "Isapre" -> true
+        "fonasa" -> true
+        "isapre" -> true
         else -> false
     }
 }
